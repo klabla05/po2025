@@ -1,23 +1,32 @@
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+
 public class Rand
 {
-    public class Lotto
+    public static class Lotto
     {
+        int min = 1;
+        int max = 49;
+        int count = 6;
         Random rand = new Random();
-        int[] losowe = new int[6];
-        for(int i=0; i<6 ; i++)
+        Set<Integer> numbers = new HashSet<>();
+        public void Generate()
         {
-            losowe[i] = rand.nextInt(1 - 49 + 1) + 1;
-            for(int j=0; j<6 ; j++){
-                if(losowe[j]==losowe[i]){
-
-                }
+            while(numbers.size() < count)
+            {
+                int lott = rand.nextInt(max - min + 1) + min;
+                numbers.add(lott);
             }
+            System.out.println("Numbers: " + numbers);
         }
     }
 
+
     public static void main(String[] args)
     {
+    Lotto lotto = new Lotto();
+    lotto.Generate();
     }
 }
 
